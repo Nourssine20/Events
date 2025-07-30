@@ -33,7 +33,7 @@ class EventController extends Controller
 
         Event::create($data);
 
-        return Redirect::route('events.index');
+        return Redirect::back();
     }
 
 public function update(StoreEventRequest $request, Event $event)
@@ -44,7 +44,7 @@ public function update(StoreEventRequest $request, Event $event)
 
         $event->update($data);
 
-        return Redirect::route('events.index');
+        return Redirect::back();
     }
 
     public function destroy(Event $event)

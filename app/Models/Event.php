@@ -10,9 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Event extends Model
 {
+       use HasFactory;
     protected $fillable = ['title', 'starts_at','ends_at'];
+    protected $casts = [
+    'starts_at' => 'datetime:Y-m-d H:i',
+    'ends_at' => 'datetime:Y-m-d H:i',
+];
 
-    use HasFactory;
+
 
     /**
      * Gets the user the event belongs to.
@@ -33,10 +38,10 @@ class Event extends Model
  public function scopeIsBetween($query, $startsAt, $endsAt)
 {
     if ($startsAt) {
-        $query->where('starts_at', '>', Carbon::parse($startsAt));
+        $query->where('starts_at', '>=', Carbon::parse($startsAt));
     }
     if ($endsAt) {
-        $query->where('starts_at', '<', Carbon::parse($endsAt));
+        $query->where('starts_at', '<=', Carbon::parse($endsAt));
     }
     return $query;
 }
@@ -54,4 +59,5 @@ class Event extends Model
     {
         return $query->orderBy('starts_at');
     }
+
 }
