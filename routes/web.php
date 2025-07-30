@@ -35,4 +35,6 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('events', EventController::class);
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::resource('events', EventController::class);
+});

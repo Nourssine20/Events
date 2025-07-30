@@ -14,7 +14,7 @@ class EventSeeder extends Seeder
      */
     public function run()
     {
-        if (!Event::exists()) {
+        if (!Event::query()->exists()) {
             Event::factory()->count(100)->create();
         }
     }

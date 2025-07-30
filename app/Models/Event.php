@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Event extends Model
 {
        use HasFactory;
-    protected $fillable = ['title', 'starts_at','ends_at'];
+    protected $fillable = ['title', 'starts_at','ends_at', 'user_id'];
     protected $casts = [
     'starts_at' => 'datetime:Y-m-d H:i',
     'ends_at' => 'datetime:Y-m-d H:i',
