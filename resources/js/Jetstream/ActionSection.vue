@@ -1,5 +1,5 @@
 <script setup>
-import JetSectionTitle from './SectionTitle.vue';
+import JetSectionTitle from "./SectionTitle.vue";
 </script>
 
 <template>

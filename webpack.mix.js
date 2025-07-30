@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,27 +11,27 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('tailwindcss'),
-    ]).webpackConfig({
+mix.js("resources/js/app.js", "public/js")
+    .postCss("resources/css/app.css", "public/css", [require("tailwindcss")])
+    .webpackConfig({
         module: {
             rules: [
                 {
                     test: /\.(postcss)$/,
                     use: [
-                        'vue-style-loader',
-                        { loader: 'css-loader', options: { importLoaders: 1 } },
-                        'postcss-loader'
-                    ]
-                }
+                        "vue-style-loader",
+                        { loader: "css-loader", options: { importLoaders: 1 } },
+                        "postcss-loader",
+                    ],
+                },
             ],
         },
     })
     .alias({
-        '@': 'resources/js',
+        "@": "resources/js",
         ziggy: "vendor/tightenco/ziggy/dist/vue",
-    }).vue({ version: 3 });
+    })
+    .vue({ version: 3 });
 
 if (mix.inProduction()) {
     mix.version();
